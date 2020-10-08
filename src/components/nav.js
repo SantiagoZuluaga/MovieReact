@@ -93,7 +93,7 @@ export default function Nav() {
         <Navbar position={navbar.position} background={navbar.background}>
             <ContainerNav>
                 <Logo to="/">
-                    Movie Next
+                    Movie React
                 </Logo>
                 <Ul>
                     <Li>
