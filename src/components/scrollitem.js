@@ -31,10 +31,10 @@ export default function ScrollItem({element, type, imagetype}) {
         <>
             {element.media_type === "movie" || type === "movies"?
                 <Element to={`/movies/${element.id}`}>
-                    <Image loading="lazy" imagetype={imagetype} src={"https://image.tmdb.org/t/p/original" + element[imagetype]} alt="Poster"/>
+                    <Image loading="lazy" imagetype={imagetype} src={"https://image.tmdb.org/t/p/w300" + element[imagetype]} alt="Poster"/>
                 </Element>:
                 <Element to={`/series/${element.id}`}>
-                    <Image loading="lazy" imagetype={imagetype} src={"https://image.tmdb.org/t/p/original" + element[imagetype]} alt="Poster"/>
+                    <Image loading="lazy" imagetype={imagetype} src={"https://image.tmdb.org/t/p/w300" + element[imagetype]} alt="Poster"/>
                 </Element>
             }
         </>

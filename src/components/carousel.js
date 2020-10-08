@@ -86,22 +86,6 @@ export default function Carousel ({popular}) {
     useEffect(() => {
         setCurrent(randomChooseCurrent())
     }, [])
-
-    /*
-    useEffect(() => {
-        const intervalRandom = setInterval(() => {
-            let random;
-            do {
-                random = randomChooseCurrent()
-            } while(current == random)
-            setCurrent(random)
-        }, 10000);
-
-        return () =>  {
-            clearInterval(intervalRandom)
-        }
-    }, [])
-    */
    
     return(
         <ContainerCarousel>
