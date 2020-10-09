@@ -3,7 +3,7 @@
 ## Descripción
 Esta aplicación es una copia del frontend de Netflix con fines educativos, para la obtención de la información de las películas se uso el API de themoviedb, para más informacion dirigirse a https://www.themoviedb.org/ y para información del API a https://developers.themoviedb.org/3.
 
-El proyecto está desplegado en el servicio de Vercel, para más información ir a https://vercel.com/
+El proyecto está desplegado en el servicio de Vercel, para más información ir a https://vercel.com/.
 Aplicación desplegada: https://movie-react.vercel.app/
 
 ## Tecnologías usadas
