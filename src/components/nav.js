@@ -1,6 +1,6 @@
 import React from "react"
 import { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 const Navbar = styled.nav`
@@ -49,11 +49,9 @@ const Links = styled(Link)`
 
 export default function Nav() {
 
-    const location = useLocation()
-    const { pathname } = location
     const [navbar, setNavbar] = useState({
-        position: "",
-        background: ""
+        position: "fixed",
+        background: "transparent"
     })
 
     const handlerScroll = () => {
@@ -72,21 +70,7 @@ export default function Nav() {
     }
 
     useEffect(() => {
-        setNavbar({
-            position: "fixed",
-            background: "transparent"
-        })
-    }, [pathname])
-
-    useEffect(() => {
         window.addEventListener('scroll', handlerScroll)
-        return () => {
-            window.removeEventListener('scroll', handlerScroll)
-            setNavbar({
-                position: "relative",
-                background: "#111"
-            })
-        }
     }, [])
 
     return (
