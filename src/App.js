@@ -5,6 +5,7 @@ import Nav from './components/nav'
 import Home from './views/home'
 import Movies from './views/movies'
 import Series from './views/series'
+import SizedBox from './components/sizedbox.js';
 
 export default function App() {
     return (
@@ -22,6 +23,7 @@ export default function App() {
                         <Series />
                     </Route>
                 </Switch>
+                <SizedBox></SizedBox>
             </BrowserRouter>
         </div>
     );

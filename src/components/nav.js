@@ -19,6 +19,67 @@ const ContainerNav = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    #res-menu{
+        display: none;
+    }
+
+    #sign-one{
+        margin-left: 10px;
+        font-size: 30px;
+        cursor: pointer;
+        display: none;
+    }
+
+    li{
+        display: inline-block;
+    }
+
+    @media (max-width: 800px) {
+        #ul{
+            position: fixed;
+            width: 250px;
+            height: 100vh;
+            background: #111;
+            top: 70px;
+            left: -80%;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+            transition: .5s;
+            z-index: 10;
+        }
+
+        li a{
+            margin-left: 0px;
+            font-size: 20px;
+            color: white; 
+        }
+
+        li{
+            display: block;
+            margin: 40px 0;
+            line-height: 30px;
+        }
+
+        #sign-one{
+            display: inline-block;
+        }
+
+        #ul-menu{
+            position: fixed;
+            width: 250px;
+            height: 100vh;
+            background: #111;
+            top: 70px;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+            transition: .5s;
+            z-index: 10;
+            left: 0;
+        }        
+    }
 `;
 
 const Logo = styled(Link)`
@@ -29,13 +90,11 @@ const Logo = styled(Link)`
     font-size: 25px;
     color: #dc3545;
     font-weight: 800;
-`;
-
-const Ul = styled.ul`
-`;
-
-const Li = styled.li`
     display: inline-block;
+
+    @media (max-width: 800px) {
+        margin-left: 20px;
+    }
 `;
 
 const Links = styled(Link)`
@@ -47,12 +106,23 @@ const Links = styled(Link)`
     margin-left: 10px;
 `;
 
+const PanelMenu = styled.div`
+    left: ${props => props.left};
+    top: 70px;
+    position: absolute;
+    background: rgba(0,0,0, 0.3);
+    width: 100%;
+    height: calc(100vh - 70px);
+`;
+
 export default function Nav() {
 
     const [navbar, setNavbar] = useState({
         position: "fixed",
         background: "transparent"
     })
+
+    const [menu, setMenu] = useState(true)
 
     const handlerScroll = () => {
         if (window.scrollY > 0) {
@@ -74,28 +144,36 @@ export default function Nav() {
     }, [])
 
     return (
-        <Navbar position={navbar.position} background={navbar.background}>
+        <Navbar position={navbar.position} background={!menu ? navbar.background : "#111"}>
             <ContainerNav>
-                <Logo to="/">
-                    Movie React
-                </Logo>
-                <Ul>
-                    <Li>
-                        <Links to="/">
+                <div>
+                    <input onClick={() => { setMenu(!menu); }} type="checkbox" id="res-menu" />
+                    <label htmlFor="res-menu">
+                        <i className="fa fa-bars" id="sign-one"></i>
+                    </label>
+                    <Logo to="/">
+                        Movie React
+                    </Logo>
+                </div>
+                <ul id={!menu ? "ul" : "ul-menu"} background={!menu ? navbar.background : "#111"}>
+                    <li>
+                        <Links onClick={() => { setMenu(false); }} to="/">
                             Home
                         </Links>
-                    </Li>
-                    <Li>
-                        <Links to="/movies">
+                    </li>
+                    <li>
+                        <Links onClick={() => { setMenu(false); }} to="/movies">
                             Movies
                         </Links>
-                    </Li>
-                    <Li>
-                        <Links to="/series">
+                    </li>
+                    <li>
+                        <Links onClick={() => { setMenu(false); }} to="/series">
                             Tv shows
                         </Links>
-                    </Li>
-                </Ul>
+                    </li>
+                </ul>
+                <PanelMenu left={!menu ? "-100%;" : "0;"} onClick={() => { setMenu(false); }}>
+                </PanelMenu>
             </ContainerNav>
         </Navbar>
     );

@@ -4,6 +4,9 @@ import styled from 'styled-components'
 
 const ContainerCarousel = styled.div`
     position: relative;
+    @media (max-width: 800px) {
+        margin-top: 70px;
+    }
 `;
 
 const ContainerImage = styled.div`
@@ -75,10 +78,10 @@ const Button = styled.button`
     padding: 8px 12px 8px 12px;
 `;
 
-export default function Carousel ({popular}) {
+export default function Carousel({ popular }) {
 
     const randomChooseCurrent = () => {
-        return Math.floor(Math.random() * 20);   
+        return Math.floor(Math.random() * 20);
     }
 
     const [current, setCurrent] = useState(0)
@@ -86,22 +89,22 @@ export default function Carousel ({popular}) {
     useEffect(() => {
         setCurrent(randomChooseCurrent())
     }, [])
-   
-    return(
+
+    return (
         <ContainerCarousel>
             <ContainerImage>
-                <img loading="lazy" width="100%" src={"https://image.tmdb.org/t/p/w1280/" + popular[current].backdrop_path} alt="Poster"/>
-            </ContainerImage>       
+                <img loading="lazy" width="100%" height="100%" src={"https://image.tmdb.org/t/p/w1280/" + popular[current].backdrop_path} alt="Poster" />
+            </ContainerImage>
             <ShadowCarousel></ShadowCarousel>
             <Panel>
-                {popular[current].media_type === "movie"?
+                {popular[current].media_type === "movie" ?
                     <Information>
                         <Block>
                             <Title>{popular[current].original_title}</Title>
                             <Button>Watch trailer</Button>
                             <Button>More info</Button>
                         </Block>
-                    </Information>:
+                    </Information> :
                     <Information>
                         <Block>
                             <Title>{popular[current].name}</Title>
