@@ -122,7 +122,7 @@ export default function Nav() {
         background: "transparent"
     })
 
-    const [menu, setMenu] = useState(true)
+    const [menu, setMenu] = useState(false)
 
     const handlerScroll = () => {
         if (window.scrollY > 0) {
@@ -144,7 +144,7 @@ export default function Nav() {
     }, [])
 
     return (
-        <Navbar position={navbar.position} background={!menu ? navbar.background : "#111"}>
+        <Navbar position={navbar.position} background={!window.screen.width <= 800 ? navbar.background : "#111"}>
             <ContainerNav>
                 <div>
                     <input onClick={() => { setMenu(!menu); }} type="checkbox" id="res-menu" />

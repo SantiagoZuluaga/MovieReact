@@ -7,14 +7,14 @@ const Element = styled(Link)`
 `;
 
 const Image = styled.img`
-    width: ${props => props.imagetype === "backdrop_path"? "250px": "233px"};
-    height: ${props => props.imagetype === "backdrop_path"? "141px": "350px"};
+    width: ${props => props.imagetype === "backdrop_path" ? "250px" : "233px"};
+    height: ${props => props.imagetype === "backdrop_path" ? "141px" : "350px"};
     border-radius: 5px;
     cursor: pointer;
 
     @media (max-width: 800px) {
-        width: ${props => props.imagetype === "backdrop_path"? "200px": "150px"};
-        height: ${props => props.imagetype === "backdrop_path"? "113px": "225px"};
+        width: ${props => props.imagetype === "backdrop_path" ? "200px" : "150px"};
+        height: ${props => props.imagetype === "backdrop_path" ? "113px" : "225px"};
     }
 
     @media (min-width: 800px) {
@@ -25,19 +25,19 @@ const Image = styled.img`
     }
 `;
 
-export default function ScrollItem({element, type, imagetype}) {
+export default function ScrollItem({ element, type, imagetype }) {
 
-    return(
+    return (
         <>
-            {element.media_type === "movie" || type === "movies"?
-                <Element to={`/movies/${element.id}`}>
-                    <Image loading="lazy" imagetype={imagetype} src={"https://image.tmdb.org/t/p/w300" + element[imagetype]} alt="Poster"/>
-                </Element>:
-                <Element to={`/series/${element.id}`}>
-                    <Image loading="lazy" imagetype={imagetype} src={"https://image.tmdb.org/t/p/w300" + element[imagetype]} alt="Poster"/>
+            {element.media_type === "movie" || type === "movies" ?
+                <Element>
+                    <Image loading="lazy" imagetype={imagetype} src={"https://image.tmdb.org/t/p/w300" + element[imagetype]} alt="Poster" />
+                </Element> :
+                <Element >
+                    <Image loading="lazy" imagetype={imagetype} src={"https://image.tmdb.org/t/p/w300" + element[imagetype]} alt="Poster" />
                 </Element>
             }
         </>
-        
+
     )
 }

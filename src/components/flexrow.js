@@ -26,6 +26,7 @@ const ScrollSpace = styled.div`
 const Scroll = styled.div`
     display: flex;
     overflow-x: scroll;
+    overflow-y: hidden;
     padding-left: 30px;
 
     &::-webkit-scrollbar {
@@ -33,15 +34,15 @@ const Scroll = styled.div`
     }
 `;
 
-export default function FlexRow({content, type, title, imagetype}) {
+export default function FlexRow({ content, type, title, imagetype }) {
 
-    return(
+    return (
         <ContainerScroll>
             <Title>{title}</Title>
             <Scroll>
                 {content.map((element, index) => {
-                    if(element[imagetype] !== null) {
-                        return <ScrollItem key={index+element.id} element={element} type={type} imagetype={imagetype}></ScrollItem>
+                    if (element[imagetype] !== null) {
+                        return <ScrollItem key={index + element.id} element={element} type={type} imagetype={imagetype}></ScrollItem>
                     }
                     else {
                         return null
